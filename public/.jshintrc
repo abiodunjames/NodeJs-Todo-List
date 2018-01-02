@@ -1,0 +1,8 @@
+{
+  "undef": true,
+  "unused": true,
+  "node": true,
+  "globals": {
+    "MY_GLOBAL": true
+  }
+}
