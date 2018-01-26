@@ -1,70 +1,59 @@
-/*jslint node: true */
-"use strict";
+/* jslint node: true */
+'use strict'
 
-var express = require('express');
+var express = require('express')
 
-var app = express();
+var morgan = require('morgan')
 
-var config = require('./app/config/config');
+var path = require('path')
 
-var mongoose = require('mongoose');
+var app = express()
 
-var morgan = require('morgan');
+var mongoose = require('mongoose')
 
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')
 
-var methodOverride = require('method-override');
+// Require configuration file defined in app/Config.js
+var config = require('./app/Config')
 
-//Configuration
-//Promise = require('bluebird');
-//mongoose.Promise = Promise;
+// Connect to database
+mongoose.connect(config.DB)
 
-mongoose.connect(config.DB);
+// Sends static files  from the public path directory
+app.use(express.static(path.join(__dirname, '/public')))
 
+// Use morgan to log request in dev mode
+app.use(morgan('dev'))
 
-app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json())
 
-app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended: true}))
 
-app.use(bodyParser.json());
+var port = config.APP_PORT || 4000
 
-//app.use(bodyParser.json({type:'application/vnd.api+json'}));
-app.use(bodyParser.urlencoded({extended: true}));
+app.listen(port) // Listen on port defined in config file
 
-app.use(methodOverride());
+console.log('App listening on port ' + port)
 
-app.listen(4000); //Listen on port 4000
+var todoRoutes = require('./app/Routes')
 
-
-console.log("App listening on port 4000");
-
-var todoRoutes = require("./app/todoRoutes");
-
-
-
-app.use('/todo', todoRoutes);
-
+//  Use routes defined in Route.js and prefix with todo
+app.use('/api', todoRoutes)
 
 app.use(function (req, res, next) {
-
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4000');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:' + port)
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
 
     // Pass to next layer of middleware
-    next();
-});
-
-
-app.get('/', function (req, res,next){
-    res.sendfile('./public/index.html');
-});
+  next()
+})
+// Server index.html page when request to the root is made
+app.get('/', function (req, res, next) {
+  res.sendfile('./public/index.html')
+})

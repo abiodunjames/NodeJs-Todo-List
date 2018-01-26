@@ -4,21 +4,21 @@ var express = require('express')
 
 var todoRoutes = express.Router()
 
-var Todo = require('./models/todo')
+var Todo = require('./Todo')
 
-// get all todos in the db
+// get all todo items in the db
 
-todoRoutes.route('/all').get(function (req, res) {
+todoRoutes.route('/all').get(function (req, res, next) {
   Todo.find(function (err, todos) {
     if (err) {
-      res.send(err) // if error, send errors
+      return next(new Error(err))
     }
 
     res.json(todos) // return all todos
   })
 })
 
-// create todo list
+// add a todo item
 todoRoutes.route('/add').post(function (req, res) {
   Todo.create(
     {
@@ -34,17 +34,19 @@ todoRoutes.route('/add').post(function (req, res) {
   )
 })
 
-// delete todo
+// delete a todo item
 
-todoRoutes.route('/delete/:id').get(function (req, res) {
+todoRoutes.route('/delete/:id').get(function (req, res, next) {
   var id = req.params.id
   Todo.findByIdAndRemove(id, function (err, todo) {
-    if (err) res.json(err)
-    else res.json('Successfully removed')
+    if (err) {
+      return next(new Error('Todo was not found'))
+    }
+    res.json('Successfully removed')
   })
 })
 
-// update todo list
+// update a todo item
 
 todoRoutes.route('/update/:id').post(function (req, res, next) {
   var id = req.params.id

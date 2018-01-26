@@ -1,34 +1,47 @@
-module.exports={
+module.exports = {
 
-    entry:'./public/dist/main.js',
-    output: {
-        filename:'./public/build/js/bundle.js'
-    },
-    resolve: {
+  entry: './public/src/main.js',
+  output: {
+    filename: './public/build/bundle.js'
+  },
+  resolve: {
 
-        alias: {
-            vue: './vue.js'
-        }
-    },
-    module:{
-        loaders:[
-            {
-            test:/\.js$/,
-            loader:'babel-loader',
-            exclude:/node_modules/
-            },
-            {
-                test:/\.vue/,
-                exclude:/(node_modules|bower_components)/,
-                use: {
-                    loader:'vue-loader'
-                }
-            }
+    alias: {
+      vue: './vue.js'
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
         ]
-    },
-    devServer: {
-     port:3000
-    },
-    
-    
+      }, {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+          }
+          // other vue-loader options go here
+        }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
+      }
+    ]
+  },
+  devServer: {
+    port: 3000
+  }
 }

@@ -9,31 +9,29 @@
     },
     "dependencies": {
         "axios": "^0.16.2",
+        "body-parser": "^1.5.2",
+        "bootstrap": "^4.0.0-beta.2",
+        "express": "~4.7.2",
+        "method-override": "~2.1.2",
+        "mongoose": "~3.6.2",
+        "morgan": "^1.9.0",
+        "vue": "^2.5.11",
+        "vue-axios": "^2.0.2"
+    },
+    "devDependencies": {
+        "prettier": "^1.9.2",
         "babel-core": "^6.25.0",
         "babel-loader": "^7.1.1",
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-stage-3": "^6.24.1",
         "babel-runtime": "^6.25.0",
-        "bluebird": "^3.5.1",
-        "body-parser": "^1.5.2",
-        "bootstrap": "^4.0.0-beta.2",
         "css-loader": "^0.28.4",
-        "express": "~4.7.2",
         "file-loader": "^0.11.2",
-        "method-override": "~2.1.2",
-        "mongoose": "~3.6.2",
-        "morgan": "~1.2.2",
-        "standard": "^10.0.3",
-        "vue": "^2.5.11",
-        "vue-axios": "^2.0.2",
         "vue-loader": "^13.0.2",
         "vue-router": "^2.7.0",
         "vue-template-compiler": "^2.4.2",
         "webpack": "^3.4.1",
         "webpack-dev-server": "^2.6.1"
-    },
-    "devDependencies": {
-        "prettier": "^1.9.2"
     }
 }
