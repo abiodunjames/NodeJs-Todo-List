@@ -10173,10 +10173,6 @@ module.exports = defaults;
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -10228,83 +10224,34 @@ module.exports = defaults;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-
   data() {
-
     return {
-
       todo: '',
-
       typing: false
-
     };
   },
 
   methods: {
 
     addTodo(event) {
-
       if (event) event.preventDefault();
 
       let url = 'http://localhost:4000/api/add';
       let param = {
-
         name: this.todo,
-
         done: 0
-
       };
-
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, param).then(response => {
-
         console.log(response);
-
         this.clearTodo();
-
         this.refreshTodo();
-
         this.typing = false;
       }).catch(error => {
-
         console.log(error);
       });
     },

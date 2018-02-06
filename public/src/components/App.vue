@@ -5,13 +5,9 @@
   
       <div class="row col-md-6 offset-md-3">
   
-  
-  
         <create-todo></create-todo>
   
         <list-todo></list-todo>
-  
-  
   
       </div>
   
@@ -61,8 +57,7 @@
   
   }
   
-  
-  
+
   .fade-enter,
   
   .fade-leave-active {
