@@ -3,11 +3,13 @@
   
     <div class="container">
   
-      <div class="row col-md-6 offset-md-3">
+      <div class="row col-md-12 d-flex justify-content-center">
   
         <create-todo></create-todo>
-  
+
+        <div class="row col-md-12 d-flex justify-content-center">
         <list-todo></list-todo>
+        </div>
   
       </div>
   
