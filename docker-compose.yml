@@ -1,0 +1,18 @@
+version: "3"
+services:
+  backend:
+    build: ./backend
+    ports: ["80:80"]
+    depends_on:
+      - db  
+    volumes:
+      - ./backend:/usr/app
+      - ./backend/package.json:/usr/app/package.json
+      - ./backend/package-lock.json:/usr/app/package-lock.json
+    environment:  
+      - MONGO_URL=mongodb://db:27017/todos
+      - APP_PORT=80
+    command: npm start 
+  db:
+    image: mongo:latest
+    ports: ["27017:27017"]
