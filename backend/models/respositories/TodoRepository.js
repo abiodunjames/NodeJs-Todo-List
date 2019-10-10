@@ -12,12 +12,15 @@ class TodoRepository {
    * @param {String} name
    */
   create(name) {
-    const todo = { name, done: false };
-    return this.model.create(todo);
+    const newTodo = { name, done: false };
+    // eslint-disable-next-line new-cap
+    const todo = new this.model(newTodo);
+
+    return todo.save();
   }
 
   findAll() {
-    return this.model.find().exec();
+    return this.model.find();
   }
 
   /**
@@ -41,7 +44,7 @@ class TodoRepository {
    */
   updateById(id, object) {
     const query = { _id: id };
-    this.model.findOneAndUpdate(query, { $set: { name: object.name, done: object.done } });
+    return this.model.findOneAndUpdate(query, { $set: { name: object.name, done: object.done } });
   }
 }
 

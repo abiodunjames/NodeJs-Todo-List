@@ -4,20 +4,24 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const config = require('./config/Config')
+const config = require('./config/Config');
 
 const routes = require('./routes/Routes');
 
 const app = express();
 
-mongoose.connect(config.DB);
+mongoose.connect(config.DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/todos', routes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -35,7 +39,7 @@ app.use((err, req, res) => {
   res.render('error');
 });
 
-app.listen(process.env.APP_PORT); // Listen on port defined in environment
+app.listen(config.APP_PORT); // Listen on port defined in environment
 
 
 module.exports = app;

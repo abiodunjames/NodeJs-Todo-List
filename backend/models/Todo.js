@@ -1,4 +1,4 @@
-const mongoose  = require('mongoose');
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
@@ -10,9 +10,6 @@ const todoSchema = new Schema({
   done: {
     type: Boolean,
   },
-},
-{
-  collection: 'todos',
 });
 
 const Todo = mongoose.model('Todo', todoSchema);
