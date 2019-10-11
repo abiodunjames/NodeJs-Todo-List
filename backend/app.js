@@ -4,6 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors')
+
 const config = require('./config/Config');
 
 const routes = require('./routes/Routes');
@@ -14,6 +16,8 @@ mongoose.connect(config.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+app.use(cors());  //enable cors
 
 app.use(logger('dev'));
 app.use(express.json());
