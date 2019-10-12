@@ -1,4 +1,4 @@
-const Todo = require('../Todo');
+const Todo = require('../models/Todo');
 
 class TodoRepository {
   /**

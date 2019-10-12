@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express.Router();
-const repository = require('../models/respositories/TodoRepository');
+const repository = require('../respositories/TodoRepository');
 
 // get all todo items in the db
 app.get('/', (req, res) => {
@@ -32,6 +32,8 @@ app.delete('/:id', (req, res) => {
 app.put('/:id', (req, res) => {
   const { id } = req.params;
   const todo = { name: req.body.name, done: req.body.done };
-  repository.updateById(id, todo).then(res.status(200).json([])).catch((error) => console.log(error));
+  repository.updateById(id, todo)
+    .then(res.status(200).json([]))
+    .catch((error) => console.log(error));
 });
 module.exports = app;
