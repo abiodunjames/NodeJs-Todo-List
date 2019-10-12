@@ -11,7 +11,7 @@ library.add(faTrash);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 const http = axios.create({
-  baseURL: process.env.BACKEND_URL? process.env.BACKEND_URL: 'http://localhost/todos',
+  baseURL: process.env.BACKEND_URL ? process.env.BACKEND_URL : 'http://localhost/todos',
 });
 
 Vue.prototype.$http = http;
