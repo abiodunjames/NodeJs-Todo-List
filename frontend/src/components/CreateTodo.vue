@@ -28,7 +28,6 @@ export default {
     };
   },
   methods: {
-
     addTodo(event) {
       if (event) event.preventDefault();
       let todo = {
@@ -49,9 +48,9 @@ export default {
     },
 
     clearTodo() {
-      this.todo = "";
+      this.name = "";
     },
-    
+
     refreshTodo() {
       bus.$emit("refreshTodo");
     }

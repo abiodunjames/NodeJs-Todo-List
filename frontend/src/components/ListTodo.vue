@@ -39,7 +39,7 @@
     </div>
     <div
       class="alert alert-primary todo__row"
-      v-show="todos.length==0"
+      v-show="todos.length==0 && doneLoading"
     >Hardest worker in the room. No more todos now you can rest. ;)</div>
   </div>
 </template>
@@ -51,15 +51,24 @@ import bus from "./../bus.js";
 export default {
   data() {
     return {
-      todos: []
+      todos: [],
+      doneLoading: false
     };
   },
   created: function() {
     this.fetchTodo();
     this.listenToEvents();
   },
+  watch: {
+    $route: function() {
+      let self = this;
+      self.doneLoading = false;
+      self.fetchData().then(function() {
+        self.doneLoading = true;
+      });
+    }
+  },
   methods: {
-    
     fetchTodo() {
       this.$http.get("/").then(response => {
         this.todos = response.data;
