@@ -1,31 +1,28 @@
-## Todo List.
-
-Build a todo list with NodeJs, VueJs & MonogDB
-
-**Run**
-
-```
-npm install
-
+## Project setup
+This app contains both the backend and the frontend in a single repository.
+```	
+├── Readme.md
+├── backend
+├── docker-compose.yml
+└── frontend
 ```
 
-**Build**
+### Clone Repository
+
+```bash
+git clone git@github.com:abiodunjames/NodeJs-Todo-List.git
 
 ```
-npm run build
 
-```
-**Installing MongoDb**
-This app relies on mongodb database and you need to have it running. You can [download](https://www.mongodb.com/download-center/community)  or use mongodb docker image. To use docker
+Navigate to the root directory.
 
+```bash
+$ cd NodeJs-Todo-List
 ```
-docker pull mongo
-docker run -p 127.0.0.1:27017:27017 --name mongodb  -t mongo
-```
+### Start app containers
 
-**Starting the app**
+Start the `frontend`, `backend` and `db` containers using docker-compose
 
+```	bash
+$ docker-compose up -d 
 ```
-npm start
-```
-Navigate to http://localhost:4000
