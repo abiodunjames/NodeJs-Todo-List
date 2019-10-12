@@ -7,24 +7,22 @@ services:
       - db  
     volumes:
       - ./backend:/usr/app
-      - ./backend/package.json:/usr/app/package.json
-      - ./backend/package-lock.json:/usr/app/package-lock.json
+      - /usr/app/node_modules
     environment:  
       - MONGO_URL=mongodb://db:27017/todos
       - APP_PORT=80
-    command: npm start
     ports: ['80:80'] 
   db:
     container_name: db
-    image: mongo:latest
+    image: mongo:4.0
+    restart: always
   frontend:
     container_name: frontend
     build:
       context: ./frontend
     volumes:
-      - './frontend:/app'
-      - ./frontend/package.json:/app/package.json
-      - ./frontend/package-lock.json:/app/package-lock.json
+      - ./frontend:/app
+      - /app/node_modules
     ports:
       - '8080:8080'
     environment:  
