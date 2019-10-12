@@ -1,9 +1,10 @@
-FROM node:10 
+FROM node:12.2.0-alpine 
 WORKDIR /usr/app
 
-COPY ./package.json  /usr/app
-COPY ./package-lock.json  /usr/app
+COPY package*.json ./
 
 RUN npm install
 
-COPY . /usr/app 
+COPY . . 
+
+CMD [ "npm", "start" ]
