@@ -1,0 +1,27 @@
+{
+    "name": "node-todo",
+    "version": "0.0.0",
+    "description": "Simple todo application.",
+    "main": "server.js",
+    "author": "Samuel James",
+    "scripts": {
+        "build": "webpack",
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "cors": "^2.8.5",
+        "debug": "~2.6.9",
+        "express": "~4.16.1",
+        "http-errors": "~1.6.3",
+        "jade": "~1.11.0",
+        "mongoose": "^5.7.3",
+        "morgan": "~1.9.1"
+    },
+    "devDependencies": {
+        "eslint": "^6.5.1",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-vue": "^5.2.3"
+    }
+}
