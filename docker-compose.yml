@@ -1,6 +1,7 @@
 version: "3"
 services:
   backend:
+    container_name: backend 
     build: ./backend
     depends_on:
       - db  
@@ -14,9 +15,10 @@ services:
     command: npm start
     ports: ['80:80'] 
   db:
+    container_name: db
     image: mongo:latest
-
   frontend:
+    container_name: frontend
     build:
       context: ./frontend
     volumes:

@@ -1,29 +1,28 @@
-# ux
+
 
 ## Project setup
+This app contains both backend and frontend in a single repository.
 ```
-npm install
+.
+├── Readme.md
+├── backend
+├── docker-compose.yml
+└── frontend
 ```
+### How to run it
+Clone the code repository
+```
+$ git clone git@github.com:abiodunjames/NodeJs-Todo-List.git
+```
+Navigate to the root directory.
 
-### Compiles and hot-reloads for development
 ```
-npm run serve
-```
+$ cd NodeJs-Todo-List
 
-### Compiles and minifies for production
 ```
-npm run build
-```
+Start the `frontend`, `backend` and `db` containers using docker-compose
 
-### Run your tests
 ```
-npm run test
+$ docker-compose up -d 
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Access the app from your browser at `http://localhost:8080`

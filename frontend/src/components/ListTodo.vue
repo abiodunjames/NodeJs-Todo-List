@@ -30,7 +30,7 @@
                 title="Delete todo?"
                 v-on:click="deleteTodo(todo._id)"
               >
-                <font-awesome-icon icon="trash" />
+                X
               </span>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       todos: [],
-      doneLoading: false
+      doneLoading: true
     };
   },
   created: function() {
