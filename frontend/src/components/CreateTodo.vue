@@ -28,14 +28,17 @@ export default {
     };
   },
   methods: {
+
     addTodo(event) {
       if (event) event.preventDefault();
       let todo = {
         name: this.name,
         done: false //false by default
       };
-        console.log(todo);
-      this.$http.post('/',todo).then(response => {
+      console.log(todo);
+      this.$http
+        .post("/", todo)
+        .then(response => {
           this.clearTodo();
           this.refreshTodo();
           this.typing = false;
@@ -44,9 +47,11 @@ export default {
           console.log(error);
         });
     },
+
     clearTodo() {
-      this.todo = null;
+      this.todo = "";
     },
+    
     refreshTodo() {
       bus.$emit("refreshTodo");
     }

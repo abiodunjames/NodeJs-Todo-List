@@ -59,11 +59,13 @@ export default {
     this.listenToEvents();
   },
   methods: {
+    
     fetchTodo() {
       this.$http.get("/").then(response => {
         this.todos = response.data;
       });
     },
+
     updateTodo(todo) {
       let id = todo._id;
       this.$http
