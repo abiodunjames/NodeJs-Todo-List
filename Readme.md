@@ -26,3 +26,4 @@ Start the `frontend`, `backend` and `db` containers using docker-compose
 ```	bash
 $ docker-compose up -d 
 ```
+Access the app from your browser at http://localhost:8080
