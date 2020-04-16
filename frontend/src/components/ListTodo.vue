@@ -1,6 +1,6 @@
 <template>
   <div v-bind:show="todos.length>0" class="col align-self-center">
-    <div class="form-row align-items-center" v-for="todo in todos">
+    <div class="form-row align-items-center" v-bind:key="todo" v-for="todo in todos">
       <div class="col-auto my-1">
         <div class="input-group mb-3 todo__row">
           <div class="input-group-prepend">
